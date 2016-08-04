@@ -17,7 +17,7 @@ import java.text.SimpleDateFormat;
 public class MainActivity extends AppCompatActivity {
 
     Button b;
-    static Dialog d ;
+    static Dialog d;
     //int year = Calendar.getInstance().get(Calendar.YEAR);
     java.util.Calendar c = java.util.Calendar.getInstance();
     SimpleDateFormat df = new SimpleDateFormat("yyyy");
@@ -30,9 +30,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         b = (Button) findViewById(R.id.year);
-        b.setText(""+year);
-        b.setOnClickListener(new View.OnClickListener()
-        {
+        b.setText("" + year);
+        b.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -41,8 +40,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void showYearDialog()
-    {
+    public void showYearDialog() {
 
         final Dialog d = new Dialog(MainActivity.this);
         //d.getWindow().setLayout(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
@@ -52,29 +50,25 @@ public class MainActivity extends AppCompatActivity {
         Button cancel = (Button) d.findViewById(R.id.button2);
         final NumberPicker nopicker = (NumberPicker) d.findViewById(R.id.numberPicker1);
 
-        nopicker.setMaxValue(year+50);
-        nopicker.setMinValue(year-50);
+        nopicker.setMaxValue(year + 50);
+        nopicker.setMinValue(year - 50);
         nopicker.setWrapSelectorWheel(false);
         nopicker.setValue(year);
         nopicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
 
-        set.setOnClickListener(new View.OnClickListener()
-        {
+        set.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 b.setText(String.valueOf(nopicker.getValue()));
                 d.dismiss();
             }
         });
-        cancel.setOnClickListener(new View.OnClickListener()
-        {
+        cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 d.dismiss();
             }
         });
         d.show();
-
-
     }
 }
